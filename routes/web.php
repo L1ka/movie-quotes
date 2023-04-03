@@ -19,10 +19,13 @@ use App\Http\Controllers\UpdateController;
 */
 
 
-Route::get('movie/create', [UpdateController::class, 'create'])->name('create');
 
 
 Route::get('admin/panel', [AdminPanelController::class, 'create'])->name('panel');
 
+Route::get('movie/create', [UpdateController::class, 'create'])->name('create');
+Route::post('movie/store', [UpdateController::class, 'store'])->name('store');
 
+Route::get('movie/{movie}', [UpdateController::class, 'edit'])->name('edit');
+Route::patch('movie/update', [UpdateController::class, 'update'])->name('update');
 
