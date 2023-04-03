@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\MovieController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AdminPanelController;
+use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\UpdateController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+
+Route::get('admin/panel', [AdminPanelController::class, 'create'])->name('panel');
+
+
+
