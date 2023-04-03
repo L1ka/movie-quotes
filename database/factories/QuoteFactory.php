@@ -18,8 +18,7 @@ class QuoteFactory extends Factory
     public function definition(): array
     {
         return [
-            'quoteEn' => fake()->sentence,
-            'quoteKa' => fake()->sentence,
+            'quote' => fake()->sentence,
             'thumbnail' => fake()->sentence,
             'movie_id' => Movie::factory(),
         ];

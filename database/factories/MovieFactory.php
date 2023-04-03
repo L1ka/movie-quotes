@@ -17,8 +17,7 @@ class MovieFactory extends Factory
     public function definition(): array
     {
         return [
-            'titleEn' => fake()->sentence,
-            'titleKa' => fake()->sentence,
+            'title' => fake()->sentence,
         ];
     }
 }
