@@ -29,6 +29,7 @@ Route::view('movies/{movie}/edit',  'movies.edit', ['movies' => Movie::all() ])-
 Route::group(['controller' => AdminMovieController::class], function () {
     Route::post('movies/store', 'store')->name('movies.store');
     Route::patch('movies/{movie}',  'update')->name('movies.update');
+    Route::delete('movies/{movie}',  'destroy')->name('movies.destroy');
 });
 
 

@@ -20,6 +20,7 @@
                 <th scope="col" class="px-8 py-6 text-2xl">Edit Quote</th>
                 <th scope="col" class="px-8 py-6 text-2xl">+ Add Quote</th>
                 <th scope="col" class="px-8 py-6 text-2xl">+ Add Movie</th>
+                <th scope="col" class="px-8 py-6 text-2xl">Delete Movie</th>
               </tr>
             </thead>
             <tbody>
@@ -35,6 +36,13 @@
                                 <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer"><i class="fa-solid fa-pen-to-square"></i></td>
                                 <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer"><i class="fa-solid fa-plus"></i></td>
                                 <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer"><a href="#"><i class="fa-solid fa-plus"></i></a></td>
+                                <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer">
+                                    <form method="POST" action="{{ route('movies.destroy', ['movie' => $movie->id]) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button onclick="return confirm('All quotes for this movie will be also deleted. Continue?')">Delete</button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                         @else
@@ -47,6 +55,13 @@
                                 <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer"><i class="fa-solid fa-pen-to-square"></i></td>
                                 <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer"><i class="fa-solid fa-plus"></i></td>
                                 <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer"><i class="fa-solid fa-plus"></i></td>
+                                <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer">
+                                    <form method="POST" action="{{ route('movies.destroy', ['movie' => $movie->id]) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button onclick="return confirm('All quotes for this movie will be also deleted. Continue?')">Delete</button>
+                                    </form>
+                                </td>
                             </tr>
 
                     @endif

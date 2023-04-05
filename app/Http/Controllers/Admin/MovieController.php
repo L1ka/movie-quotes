@@ -44,4 +44,13 @@ class MovieController extends Controller
 
         return view('movies.dashboard' , ['movies' => $movies]);
     }
+
+    public function destroy(Movie $movie): View
+    {
+        $movie->delete();
+
+        $movies = $movie::with('quotes')->get();
+
+        return view('movies.dashboard' , ['movies' => $movies]);
+    }
 }
