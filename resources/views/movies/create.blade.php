@@ -1,6 +1,6 @@
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
-<form method="Post" action="{{ route('store') }}">
+<form method="Post" action="{{ route('movies.store') }}">
     @csrf
     <input type="text" name="title[ka]"  value="{{ old('title.ka') }}" placeholder="ka title">
     @error('title.ka')

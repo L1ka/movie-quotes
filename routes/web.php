@@ -2,11 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\MovieController;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Admin\MovieController as AdminMovieController;
 use App\Http\Controllers\AdminPanelController;
-use App\Http\Controllers\LocaleController;
-use App\Http\Controllers\UpdateController;
+use App\Models\Movie;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,11 +21,15 @@ use App\Http\Controllers\UpdateController;
 
 
 
-Route::get('admin/panel', [AdminPanelController::class, 'create'])->name('panel');
+Route::view('movies/dashboard', 'movies.dashboard',  ['movies' => Movie::with('quotes')->get()])->name('movies.dashboard');
+Route::view('movies/create','movies.create')->name('movies.create');
+Route::view('movies/{movie}/edit',  'movies.edit', ['movies' => Movie::all() ])->name('movies.edit');
 
-Route::get('movie/create', [UpdateController::class, 'create'])->name('create');
-Route::post('movie/store', [UpdateController::class, 'store'])->name('store');
 
-Route::get('movie/{movie}', [UpdateController::class, 'edit'])->name('edit');
-Route::patch('movie/update', [UpdateController::class, 'update'])->name('update');
+Route::group(['controller' => AdminMovieController::class], function () {
+    Route::post('movies/store', 'store')->name('movies.store');
+    Route::patch('movies/{movie}',  'update')->name('movies.update');
+});
+
+
 

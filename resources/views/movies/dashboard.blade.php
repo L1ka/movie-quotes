@@ -31,10 +31,10 @@
                                 <td class="whitespace-nowrap px-8 py-6 text-xl">{{ $movie->title }}</td>
                                 <td class="whitespace-nowrap px-8 py-6 text-xl">{{ $quote->quote }}</td>
                                 <td class="whitespace-nowrap px-8 py-6 text-xl">{{ $quote->thumbnail }}</td>
-                                <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer"><a href="{{ route('edit', ['movie' => $movie->id]) }}"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                                <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer"><a href="{{ route('movies.edit', ['movie' => $movie->id]) }}"><i class="fa-solid fa-pen-to-square"></i></a></td>
                                 <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer"><i class="fa-solid fa-pen-to-square"></i></td>
                                 <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer"><i class="fa-solid fa-plus"></i></td>
-                                <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer"><a href="{{ route('create') }}"><i class="fa-solid fa-plus"></i></a></td>
+                                <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer"><a href="#"><i class="fa-solid fa-plus"></i></a></td>
                             </tr>
                         @endforeach
                         @else
@@ -43,7 +43,7 @@
                                 <td class="whitespace-nowrap px-8 py-6 text-xl">{{ $movie->title }}</td>
                                 <td class="whitespace-nowrap px-8 py-6 text-xl">--</td>
                                 <td class="whitespace-nowrap px-8 py-6 text-xl">--</td>
-                                <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer"><a href="{{ route('edit', ['movie' => $movie->id]) }}"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                                <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer"><a href="{{ route('movies.edit', ['movie' => $movie->id]) }}"><i class="fa-solid fa-pen-to-square"></i></a></td>
                                 <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer"><i class="fa-solid fa-pen-to-square"></i></td>
                                 <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer"><i class="fa-solid fa-plus"></i></td>
                                 <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer"><i class="fa-solid fa-plus"></i></td>
