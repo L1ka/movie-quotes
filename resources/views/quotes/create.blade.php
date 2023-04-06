@@ -9,7 +9,7 @@
 
         @csrf
         <select name="movie_id" id="movie_id" required>
-            @foreach (\App\Models\Movie::all() as $movie)
+            @foreach ($movies as $movie)
                 <option
                     value="{{ $movie->id }}"
                     {{ old('movie_id') }}
