@@ -9,6 +9,11 @@ use Illuminate\Contracts\View\View;
 class MovieController extends Controller
 {
 
+    public function index(): View
+    {
+        return view('movies.dashboard', ['movies' => Movie::with('quotes')->get()]);
+    }
+
     public function edit(Movie $movie): View
     {
         return view('movies.edit', ['movie' => $movie]);

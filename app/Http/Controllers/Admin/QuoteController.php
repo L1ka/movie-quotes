@@ -18,7 +18,7 @@ class QuoteController extends Controller
 
     public function edit(Movie $movie, Quote $quote): View
     {
-        return view('quotes.edit', ['quote' => $quote, 'movies' =>  $movie->all(),]);
+        return view('quotes.edit', ['quote' => $quote, 'movie' =>  $movie->all()->find($quote->movie_id),]);
     }
 
     public function store(StoreQuoteRequest $request): View
@@ -28,7 +28,7 @@ class QuoteController extends Controller
         Quote::create([
             ...$validated
            ,
-            'thumbnail' =>request()->file('thumbnail')->store('thumbnails'),
+            'thumbnail' => '/storage/'.request()->file('thumbnail')->store('thumbnails'),
         ]);
 
 
@@ -44,7 +44,7 @@ class QuoteController extends Controller
         $quote->update([
             ...$validated
            ,
-            'thumbnail' =>request()->file('thumbnail')->store('thumbnails'),
+            'thumbnail' => '/storage/'.request()->file('thumbnail')->store('thumbnails'),
         ]);
 
         $movies = Movie::with('quotes')->get();

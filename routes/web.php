@@ -23,10 +23,11 @@ use App\Http\Controllers\Admin\DashboardController;
 
 
 
-Route::get('movies/dashboard', [DashboardController::class, 'index'])->name('movies.dashboard');
+
 Route::view('movies/create','movies.create')->name('movies.create');
 
 Route::group(['controller' => AdminMovieController::class], function () {
+    Route::get('movies/dashboard',  'index')->name('movies_dashboard');
     Route::post('movies/store', 'store')->name('movies.store');
     Route::get('movies/{movie}/edit',  'edit')->name('movies.edit');
     Route::patch('movies/{movie}',  'update')->name('movies.update');
@@ -41,8 +42,8 @@ Route::group(['controller' => QuoteController::class], function () {
     Route::delete('quotes/{quote}',  'destroy')->name('quotes.destroy');
 });
 
-Route::view('movies/login', 'login')->name('login.create');
-Route::post('movies/login', [LoginController::class, 'store'])->name('login.store');
+Route::view('movies/login', 'login')->name('login.create')->middleware('guest');
+Route::post('movies/login', [LoginController::class, 'store'])->name('login.store')->middleware('guest');
 
 
 
