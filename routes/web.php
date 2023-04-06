@@ -5,9 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\MovieController as AdminMovieController;
 use App\Http\Controllers\Admin\QuoteController;
+use App\Http\Controllers\Admin\DashboardController;
 
-use App\Models\Movie;
-use App\Models\Quote;
 
 
 /*
@@ -24,22 +23,20 @@ use App\Models\Quote;
 
 
 
-Route::view('movies/dashboard', 'movies.dashboard',  ['movies' => Movie::with('quotes')->get()])->name('movies.dashboard');
+Route::get('movies/dashboard', [DashboardController::class, 'index'])->name('movies.dashboard');
 Route::view('movies/create','movies.create')->name('movies.create');
-Route::view('movies/{movie}/edit',  'movies.edit', ['movies' => Movie::all() ])->name('movies.edit');
-
-Route::view('quotes/create','quotes.create', ['movies' =>  movie::all()])->name('quotes.create');
-Route::view('quotes/{quote}/edit',  'quotes.edit', ['quotes' => Quote::all(), 'movies' =>  movie::all(),])->name('quotes.edit');
-
 
 Route::group(['controller' => AdminMovieController::class], function () {
     Route::post('movies/store', 'store')->name('movies.store');
+    Route::get('movies/{movie}/edit',  'edit')->name('movies.edit');
     Route::patch('movies/{movie}',  'update')->name('movies.update');
     Route::delete('movies/{movie}',  'destroy')->name('movies.destroy');
 });
 
 Route::group(['controller' => QuoteController::class], function () {
+    Route::get('quotes/create','create')->name('quotes.create');
     Route::post('quotes/store', 'store')->name('quotes.store');
+    Route::get('quotes/{quote}/edit',  'edit')->name('quotes.edit');
     Route::patch('quotes/{quote}',  'update')->name('quotes.update');
     Route::delete('quotes/{quote}',  'destroy')->name('quotes.destroy');
 });

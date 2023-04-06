@@ -10,6 +10,17 @@ use Illuminate\Contracts\View\View;
 
 class QuoteController extends Controller
 {
+
+    public function create(): View
+    {
+        return view('quotes.create', ['movies' =>  Movie::all()]);
+    }
+
+    public function edit(Movie $movie, Quote $quote): View
+    {
+        return view('quotes.edit', ['quote' => $quote, 'movies' =>  $movie->all(),]);
+    }
+
     public function store(StoreQuoteRequest $request): View
     {
         $validated = $request->validated();

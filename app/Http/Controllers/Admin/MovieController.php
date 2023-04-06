@@ -9,6 +9,11 @@ use Illuminate\Contracts\View\View;
 class MovieController extends Controller
 {
 
+    public function edit(Movie $movie): View
+    {
+        return view('movies.edit', ['movie' => $movie]);
+    }
+
     public function store(Movie $movie): View
     {
 
