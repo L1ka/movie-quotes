@@ -40,10 +40,10 @@ Route::group(['controller' => QuoteController::class], function () {
     Route::delete('quotes/{quote}',  'destroy')->name('quotes.destroy');
 });
 
-Route::get('login', [LoginController::class, 'create'])->name('login.create')->middleware('guest')->middleware('locale');
-Route::post('login', [LoginController::class, 'store'])->name('login.store')->middleware('guest');
+Route::get('login', [LoginController::class, 'index'])->name('login.index')->middleware('guest');
+Route::post('login', [LoginController::class, 'signIn'])->name('login.signIn')->middleware('guest');
 
-Route::get('locale/{locale}', [LocaleController::class, 'store'])->name('locale.store');
+Route::get('locale/{locale}', [LocaleController::class, 'setLocale'])->name('locale.setLocale');
 
 
 

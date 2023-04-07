@@ -10,12 +10,12 @@ use Illuminate\Http\RedirectResponse;
 
 class LoginController extends Controller
 {
-    public function store(StoreLoginRequest $request): RedirectResponse
+    public function signIn(StoreLoginRequest $request): RedirectResponse
     {
         return redirect('movies/dashboard');
     }
 
-    public function create(): View
+    public function index(): View
     {
         $movies = Movie::with('quotes')->get();
         return view('login' , ['movies' => $movies]);

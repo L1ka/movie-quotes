@@ -6,7 +6,7 @@ use Illuminate\Http\RedirectResponse;
 
 class LocaleController extends Controller
 {
-    public function store($locale): RedirectResponse
+    public function setLocale($locale): RedirectResponse
     {
         if (! in_array($locale, ['en', 'ka'])) {
             abort(403);
