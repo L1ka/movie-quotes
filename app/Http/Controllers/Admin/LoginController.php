@@ -6,25 +6,20 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreLoginRequest;
 use App\Models\Movie;
 use Illuminate\Contracts\View\View;
-
+use Illuminate\Http\RedirectResponse;
 
 class LoginController extends Controller
 {
-    public function store(StoreLoginRequest $request): View
+    public function store(StoreLoginRequest $request): RedirectResponse
     {
-        $movies = Movie::with('quotes')->get();
-        return view('movies_dashboard.index' , ['movies' => $movies]);
+        return redirect('movies/dashboard');
     }
 
-    public function create($locale): View
+    public function create(): View
     {
-        if (! in_array($locale, ['en', 'ka'])) {
-            abort(403);
-        }
-        app()->setLocale($locale);
-        session()->put('locale', $locale);
-
         $movies = Movie::with('quotes')->get();
         return view('login' , ['movies' => $movies]);
     }
+
+
 }

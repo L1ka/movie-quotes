@@ -16,7 +16,7 @@ class StoreLoginRequest extends FormRequest
     {
         return [
             'username' => ['required', 'exists:users'],
-            'password' => ['required', 'exists:users']
+            'password' => ['required']
         ];
     }
 }

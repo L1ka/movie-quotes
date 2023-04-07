@@ -10,7 +10,7 @@
     @error('title.en')
     {{ $message }}
     @enderror
-    <button type="submit" >Save</button>
+    <button type="submit" >{{ __('save') }}</button>
 
     @if(Session::get('success'))
         <div x-data="{show: true}"
