@@ -16,9 +16,9 @@ class QuoteController extends Controller
         return view('quotes.create', ['movies' =>  Movie::all()]);
     }
 
-    public function edit(Movie $movie, Quote $quote): View
+    public function edit(Quote $quote): View
     {
-        return view('quotes.edit', ['quote' => $quote, 'movie' =>  $movie->all()->find($quote->movie_id),]);
+        return view('quotes.edit', ['quote' => $quote, 'movie' =>  Movie::where('id', $quote->movie_id)->first()]);
     }
 
     public function store(StoreQuoteRequest $request): View
@@ -34,7 +34,7 @@ class QuoteController extends Controller
 
         $movies =  Movie::with('quotes')->get();
 
-        return view('movies.dashboard' , ['movies' => $movies]);
+        return view('movies_dashboard.index' , ['movies' => $movies]);
     }
 
     public function update(StoreQuoteRequest $request, Quote $quote): View
@@ -50,7 +50,7 @@ class QuoteController extends Controller
         $movies = Movie::with('quotes')->get();
 
 
-        return view('movies.dashboard' , ['movies' => $movies]);
+        return view('movies_dashboard.index' , ['movies' => $movies]);
     }
 
     public function destroy(Quote $quote): View
@@ -59,6 +59,6 @@ class QuoteController extends Controller
 
         $movies = Movie::with('quotes')->get();
 
-        return view('movies.dashboard' , ['movies' => $movies]);
+        return view('movies_dashboard.index' , ['movies' => $movies]);
     }
 }

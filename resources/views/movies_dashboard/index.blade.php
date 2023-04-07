@@ -3,6 +3,15 @@
 @vite('resources/css/app.css')
 
 
+<div class="absolute left-[50px] top-[473px]">
+    <div class="w-[58px] h-[58px] border rounded-full flex justify-center items-center mb-4 cursor-pointer">
+        <h3 class="text-2xl  text-white "><a href="en">en</a></h3>
+    </div>
+    <div class="w-[58px] h-[58px] border rounded-full flex justify-center items-center bg-white cursor-pointer">
+        <h3 class="text-2xl  text-black font-sans"><a href="ka">ka</a></h3>
+    </div>
+</div>
+
  <div class="flex justify-center">
 <div class="w-[100%]">
   <div class="flex flex-col">

@@ -31,7 +31,7 @@
           @error('quote.ka')
           {{ $message }}
           @enderror
-          <img src="{{ $quote->thumbnail }}" alt="">
+          <img src="{{ $quote->thumbnail }}" alt=">Movie poster">
           <div>
             <input  name="thumbnail"  value="{{ $quote->thumbnail }}" type="file" required class="relative block w-full rounded-b-md border-0 py-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-m sm:leading-6 indent-3">
           </div>

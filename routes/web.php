@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\MovieController as AdminMovieController;
 use App\Http\Controllers\Admin\QuoteController;
-use App\Http\Controllers\Admin\DashboardController;
+
 
 
 
@@ -27,7 +27,7 @@ use App\Http\Controllers\Admin\DashboardController;
 Route::view('movies/create','movies.create')->name('movies.create');
 
 Route::group(['controller' => AdminMovieController::class], function () {
-    Route::get('movies/dashboard',  'index')->name('movies_dashboard');
+    Route::get('movies/dashboard',  'index')->name('movies_dashboard.index');
     Route::post('movies/store', 'store')->name('movies.store');
     Route::get('movies/{movie}/edit',  'edit')->name('movies.edit');
     Route::patch('movies/{movie}',  'update')->name('movies.update');
@@ -42,8 +42,9 @@ Route::group(['controller' => QuoteController::class], function () {
     Route::delete('quotes/{quote}',  'destroy')->name('quotes.destroy');
 });
 
-Route::view('movies/login', 'login')->name('login.create')->middleware('guest');
-Route::post('movies/login', [LoginController::class, 'store'])->name('login.store')->middleware('guest');
+Route::get('login', [LoginController::class, 'create'])->name('login.create')->middleware('guest');
+Route::post('login', [LoginController::class, 'store'])->name('login.store')->middleware('guest');
+
 
 
 
