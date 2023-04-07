@@ -9,6 +9,16 @@ use Illuminate\Contracts\View\View;
 class MovieController extends Controller
 {
 
+    public function index(): View
+    {
+        return view('movies_dashboard.index', ['movies' => Movie::with('quotes')->get()]);
+    }
+
+    public function edit(Movie $movie): View
+    {
+        return view('movies.edit', ['movie' => $movie]);
+    }
+
     public function store(Movie $movie): View
     {
 
@@ -24,7 +34,7 @@ class MovieController extends Controller
 
        $movies =  $movie::with('quotes')->get();
 
-        return view('movies.dashboard' , ['movies' => $movies]);
+        return view('movies_dashboard.index' , ['movies' => $movies]);
     }
 
 
@@ -42,6 +52,15 @@ class MovieController extends Controller
         $movies = $movie::with('quotes')->get();
 
 
-        return view('movies.dashboard' , ['movies' => $movies]);
+        return view('movies_dashboard.index' , ['movies' => $movies]);
+    }
+
+    public function destroy(Movie $movie): View
+    {
+        $movie->delete();
+
+        $movies = $movie::with('quotes')->get();
+
+        return view('movies_dashboard.index' , ['movies' => $movies]);
     }
 }

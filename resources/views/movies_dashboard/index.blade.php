@@ -3,8 +3,17 @@
 @vite('resources/css/app.css')
 
 
+<div class="absolute left-[50px] top-[473px]">
+    <div class="w-[58px] h-[58px] border rounded-full flex justify-center items-center mb-4 cursor-pointer">
+        <h3 class="text-2xl  text-white "><a href="en">en</a></h3>
+    </div>
+    <div class="w-[58px] h-[58px] border rounded-full flex justify-center items-center bg-white cursor-pointer">
+        <h3 class="text-2xl  text-black font-sans"><a href="ka">ka</a></h3>
+    </div>
+</div>
+
  <div class="flex justify-center">
-<div class="w-[80%]">
+<div class="w-[100%]">
   <div class="flex flex-col">
     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
@@ -20,6 +29,8 @@
                 <th scope="col" class="px-8 py-6 text-2xl">Edit Quote</th>
                 <th scope="col" class="px-8 py-6 text-2xl">+ Add Quote</th>
                 <th scope="col" class="px-8 py-6 text-2xl">+ Add Movie</th>
+                <th scope="col" class="px-8 py-6 text-2xl">Delete Movie</th>
+                <th scope="col" class="px-8 py-6 text-2xl">Delete Quote</th>
               </tr>
             </thead>
             <tbody>
@@ -32,9 +43,23 @@
                                 <td class="whitespace-nowrap px-8 py-6 text-xl">{{ $quote->quote }}</td>
                                 <td class="whitespace-nowrap px-8 py-6 text-xl">{{ $quote->thumbnail }}</td>
                                 <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer"><a href="{{ route('movies.edit', ['movie' => $movie->id]) }}"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                                <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer"><i class="fa-solid fa-pen-to-square"></i></td>
-                                <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer"><i class="fa-solid fa-plus"></i></td>
+                                <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer"><a href="{{ route('quotes.edit', ['quote' => $quote->id]) }}"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                                <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer"><a href="{{ route('quotes.create') }}"><i class="fa-solid fa-plus"></i></a></td>
                                 <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer"><a href="#"><i class="fa-solid fa-plus"></i></a></td>
+                                <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer">
+                                    <form method="POST" action="{{ route('movies.destroy', ['movie' => $movie->id]) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button onclick="return confirm('All quotes for this movie will be also deleted. Continue?')">Delete</button>
+                                    </form>
+                                </td>
+                                <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer">
+                                    <form method="POST" action="{{ route('quotes.destroy', ['quote' => $quote->id]) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button onclick="return confirm('Image for this quote will be also deleted. Continue?')">Delete</button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                         @else
@@ -44,9 +69,17 @@
                                 <td class="whitespace-nowrap px-8 py-6 text-xl">--</td>
                                 <td class="whitespace-nowrap px-8 py-6 text-xl">--</td>
                                 <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer"><a href="{{ route('movies.edit', ['movie' => $movie->id]) }}"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                                <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer"><i class="fa-solid fa-pen-to-square"></i></td>
-                                <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer"><i class="fa-solid fa-plus"></i></td>
-                                <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer"><i class="fa-solid fa-plus"></i></td>
+                                <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer">--</td>
+                                <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer"><a href="{{ route('quotes.create', ['id' => $movie->id]) }}"><i class="fa-solid fa-plus"></i></a></td>
+                                <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer">--</td>
+                                <td class="whitespace-nowrap px-8 py-6 text-xl cursor-pointer">
+                                    <form method="POST" action="{{ route('movies.destroy', ['movie' => $movie->id]) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button onclick="return confirm('All quotes for this movie will be also deleted. Continue?')">Delete</button>
+                                    </form>
+                                </td>
+
                             </tr>
 
                     @endif
