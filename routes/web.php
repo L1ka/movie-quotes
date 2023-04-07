@@ -42,8 +42,8 @@ Route::group(['controller' => QuoteController::class], function () {
     Route::delete('quotes/{quote}',  'destroy')->name('quotes.destroy');
 });
 
-Route::get('login', [LoginController::class, 'create'])->name('login.create')->middleware('guest');
-Route::post('login', [LoginController::class, 'store'])->name('login.store')->middleware('guest');
+Route::get('login/{locale}', [LoginController::class, 'create'])->name('login.create')->middleware('guest');
+Route::post('login/{locale}', [LoginController::class, 'store'])->name('login.store')->middleware('guest');
 
 
 
