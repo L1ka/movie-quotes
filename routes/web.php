@@ -41,11 +41,9 @@ Route::group(['controller' => QuoteController::class], function () {
 });
 
 Route::get('login', [LoginController::class, 'index'])->name('login.index')->middleware('guest');
-Route::post('login', [LoginController::class, 'signIn'])->name('login.signIn')->middleware('guest');
+Route::post('login', [LoginController::class, 'signIn'])->name('login.sign-in')->middleware('guest');
 
-Route::get('locale/{locale}', [LocaleController::class, 'setLocale'])->name('locale.setLocale');
-
-
+Route::get('{locale}', [LocaleController::class, 'setLocale'])->name('set-locale');
 
 
 
