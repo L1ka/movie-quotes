@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: "Sansation";
+        font-weight: 400;
+        src: url("/style/Sansation_Regular.ttf") format("ttf");
+    }
+
+    html {
+        font-family: "Sansation";
+        background: radial-gradient(
+            50% 50% at 50% 50%,
+            #4e4e4e 0%,
+            #3d3b3b 99.99%,
+            #3d3b3b 100%
+        );
+    }
+}
