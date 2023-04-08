@@ -1,6 +1,6 @@
 
 
-<h1>Edit Movie: {{ $movie->title }}</h1>
+<h1>{{ __('edit_movie') }} {{ $movie->title }}</h1>
 
 
 <form method="Post" action="{{ route('movies.update', ['movie' => $movie]) }}" >

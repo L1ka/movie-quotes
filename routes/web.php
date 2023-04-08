@@ -5,9 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\MovieController as AdminMovieController;
 use App\Http\Controllers\Admin\QuoteController;
-
-
-
+use App\Http\Controllers\LocaleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,9 +40,10 @@ Route::group(['controller' => QuoteController::class], function () {
     Route::delete('quotes/{quote}',  'destroy')->name('quotes.destroy');
 });
 
-Route::get('login', [LoginController::class, 'create'])->name('login.create')->middleware('guest');
-Route::post('login', [LoginController::class, 'store'])->name('login.store')->middleware('guest');
+Route::get('login', [LoginController::class, 'index'])->name('login.index')->middleware('guest');
+Route::post('login', [LoginController::class, 'signIn'])->name('login.sign-in')->middleware('guest');
 
+Route::get('set-locale/{locale}', [LocaleController::class, 'setLocale'])->name('set-locale');
 
 
 
