@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\MovieController as AdminMovieController;
 use App\Http\Controllers\Admin\QuoteController;
 use App\Http\Controllers\LocaleController;
-
+use App\Http\Controllers\MovieController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,6 +44,10 @@ Route::get('login', [LoginController::class, 'index'])->name('login.index')->mid
 Route::post('login', [LoginController::class, 'signIn'])->name('login.sign-in')->middleware('guest');
 
 Route::get('set-locale/{locale}', [LocaleController::class, 'setLocale'])->name('set-locale');
+
+
+Route::get('/', [MovieController::class, 'index'])->name('home.index');
+Route::get('movies/{movie}', [MovieController::class, 'list'])->name('movie.list');
 
 
 
