@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\MovieController as AdminMovieController;
@@ -20,12 +20,11 @@ use App\Http\Controllers\MovieController;
 
 
 
-
+Route::view('movies/create','movies.create')->middleware('auth')->name('movies.create');
 
 
 
 Route::group(['controller' => AdminMovieController::class, 'middleware' => 'auth'], function () {
-    Route::view('movies/create','movies.create')->name('movies.create');
     Route::get('movies/dashboard',  'index')->name('movies_dashboard.index');
     Route::post('movies/store', 'store')->name('movies.store');
     Route::get('movies/{movie}/edit',  'edit')->name('movies.edit');
@@ -41,8 +40,8 @@ Route::group(['controller' => QuoteController::class, 'middleware' => 'auth'], f
     Route::delete('quotes/{quote}',  'destroy')->name('quotes.destroy');
 });
 
-Route::get('login', [LoginController::class, 'index'])->name('login.index');
-Route::post('login', [LoginController::class, 'signIn'])->name('login.sign-in');
+Route::get('login', [AuthController::class, 'index'])->middleware('guest')->name('login.index');
+Route::post('login', [AuthController::class, 'signIn'])->middleware('guest')->name('login.sign-in');
 
 Route::get('set-locale/{locale}', [LocaleController::class, 'setLocale'])->name('set-locale');
 
