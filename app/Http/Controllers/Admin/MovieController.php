@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Movie;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class MovieController extends Controller
 {
@@ -19,7 +20,7 @@ class MovieController extends Controller
         return view('movies.edit', ['movie' => $movie]);
     }
 
-    public function store(Movie $movie): View
+    public function store(Movie $movie): RedirectResponse
     {
 
         $attributes = request()->validate([
@@ -32,13 +33,11 @@ class MovieController extends Controller
         ->save();
 
 
-       $movies =  $movie::with('quotes')->get();
-
-        return view('movies_dashboard.index' , ['movies' => $movies]);
+        return redirect('movies/dashboard');
     }
 
 
-    public function update(Movie $movie): View
+    public function update(Movie $movie): RedirectResponse
     {
         $attributes = request()->validate([
             'title.*' => ['required','unique_translation:movies'],
@@ -49,18 +48,13 @@ class MovieController extends Controller
         ->setTranslation('title', 'ka', $attributes['title']['ka'])
         ->save();
 
-        $movies = $movie::with('quotes')->get();
-
-
-        return view('movies_dashboard.index' , ['movies' => $movies]);
+        return redirect('movies/dashboard');
     }
 
-    public function destroy(Movie $movie): View
+    public function destroy(Movie $movie): RedirectResponse
     {
         $movie->delete();
 
-        $movies = $movie::with('quotes')->get();
-
-        return view('movies_dashboard.index' , ['movies' => $movies]);
+        return redirect('movies/dashboard');
     }
 }
