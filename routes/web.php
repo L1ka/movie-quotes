@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\MovieController as AdminMovieController;
@@ -20,11 +20,11 @@ use App\Http\Controllers\MovieController;
 
 
 
+Route::view('movies/create','movies.create')->middleware('auth')->name('movies.create');
 
 
-Route::view('movies/create','movies.create')->name('movies.create');
 
-Route::group(['controller' => AdminMovieController::class], function () {
+Route::group(['controller' => AdminMovieController::class, 'middleware' => 'auth'], function () {
     Route::get('movies/dashboard',  'index')->name('movies_dashboard.index');
     Route::post('movies/store', 'store')->name('movies.store');
     Route::get('movies/{movie}/edit',  'edit')->name('movies.edit');
@@ -32,7 +32,7 @@ Route::group(['controller' => AdminMovieController::class], function () {
     Route::delete('movies/{movie}',  'destroy')->name('movies.destroy');
 });
 
-Route::group(['controller' => QuoteController::class], function () {
+Route::group(['controller' => QuoteController::class, 'middleware' => 'auth'], function () {
     Route::get('quotes/create','create')->name('quotes.create');
     Route::post('quotes/store', 'store')->name('quotes.store');
     Route::get('quotes/{quote}/edit',  'edit')->name('quotes.edit');
@@ -40,8 +40,8 @@ Route::group(['controller' => QuoteController::class], function () {
     Route::delete('quotes/{quote}',  'destroy')->name('quotes.destroy');
 });
 
-Route::get('login', [LoginController::class, 'index'])->name('login.index')->middleware('guest');
-Route::post('login', [LoginController::class, 'signIn'])->name('login.sign-in')->middleware('guest');
+Route::get('login', [AuthController::class, 'index'])->middleware('guest')->name('login.index');
+Route::post('login', [AuthController::class, 'signIn'])->middleware('guest')->name('login.sign-in');
 
 Route::get('set-locale/{locale}', [LocaleController::class, 'setLocale'])->name('set-locale');
 

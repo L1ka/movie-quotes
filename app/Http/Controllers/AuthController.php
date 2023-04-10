@@ -1,17 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreLoginRequest;
 use App\Models\Movie;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Validation\ValidationException;
 
-class LoginController extends Controller
+class AuthController extends Controller
 {
     public function signIn(StoreLoginRequest $request): RedirectResponse
     {
+        if (! auth()->attempt($request->validated())) {
+            throw ValidationException::withMessages([
+                'email' => 'Your provided credentials could not be verified.'
+            ]);
+        }
+        session()->regenerate();
+
         return redirect('movies/dashboard');
     }
 
@@ -20,6 +28,4 @@ class LoginController extends Controller
         $movies = Movie::with('quotes')->get();
         return view('login' , ['movies' => $movies]);
     }
-
-
 }
