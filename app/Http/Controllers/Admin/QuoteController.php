@@ -7,6 +7,7 @@ use App\Http\Requests\StoreQuoteRequest;
 use App\Models\Quote;
 use App\Models\Movie;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class QuoteController extends Controller
 {
@@ -21,7 +22,7 @@ class QuoteController extends Controller
         return view('quotes.edit', ['quote' => $quote, 'movie' =>  Movie::where('id', $quote->movie_id)->first()]);
     }
 
-    public function store(StoreQuoteRequest $request): View
+    public function store(StoreQuoteRequest $request): RedirectResponse
     {
         $validated = $request->validated();
 
@@ -32,12 +33,10 @@ class QuoteController extends Controller
         ]);
 
 
-        $movies =  Movie::with('quotes')->get();
-
-        return view('movies_dashboard.index' , ['movies' => $movies]);
+        return redirect('movies/dashboard');
     }
 
-    public function update(StoreQuoteRequest $request, Quote $quote): View
+    public function update(StoreQuoteRequest $request, Quote $quote): RedirectResponse
     {
         $validated = $request->validated();
 
@@ -47,10 +46,7 @@ class QuoteController extends Controller
             'thumbnail' => '/storage/'.request()->file('thumbnail')->store('thumbnails'),
         ]);
 
-        $movies = Movie::with('quotes')->get();
-
-
-        return view('movies_dashboard.index' , ['movies' => $movies]);
+        return redirect('movies/dashboard');
     }
 
     public function destroy(Quote $quote): View
