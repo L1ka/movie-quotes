@@ -30,7 +30,7 @@ class MovieController extends Controller
         ->save();
 
 
-        return redirect('movies/dashboard');
+        return redirect()->route('movies_dashboard.index');
     }
 
 
@@ -43,13 +43,13 @@ class MovieController extends Controller
         ->setTranslation('title', 'ka', $attributes['title']['ka'])
         ->save();
 
-        return redirect('movies/dashboard');
+        return redirect()->route('movies_dashboard.index');
     }
 
     public function destroy(Movie $movie): RedirectResponse
     {
         $movie->delete();
 
-        return redirect('movies/dashboard');
+        return redirect()->route('movies_dashboard.index');
     }
 }

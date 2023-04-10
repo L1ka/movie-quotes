@@ -20,7 +20,7 @@ class AuthController extends Controller
         }
         session()->regenerate();
 
-        return redirect('movies/dashboard');
+        return redirect()->route('movies_dashboard.index');
     }
 
     public function index(): View

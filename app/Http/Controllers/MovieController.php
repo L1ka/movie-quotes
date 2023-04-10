@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Movie;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class MovieController extends Controller
 {
-    public function index(): View
+    public function index(Movie $movie): View | RedirectResponse
     {
+        if($movie->count() === 0){
+           return redirect()->route('login.index');
+        }
 
         $movie = Movie::with('quotes')->get()->random();
         if($movie->quotes->count() === 0){
