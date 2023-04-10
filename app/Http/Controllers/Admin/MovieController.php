@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use App\Http\Requests\StoreMovieRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Movie;
 use Illuminate\Contracts\View\View;
@@ -20,10 +20,9 @@ class MovieController extends Controller
         return view('movies.edit', ['movie' => $movie]);
     }
 
-    public function store(Movie $movie): RedirectResponse
+    public function store(Movie $movie, StoreMovieRequest $request ): RedirectResponse
     {
-
-        $attributes = request()->validateed();
+        $attributes = $request->validated();
 
         $movie
         ->setTranslation('title', 'en', $attributes['title']['en'])
@@ -35,9 +34,9 @@ class MovieController extends Controller
     }
 
 
-    public function update(Movie $movie): RedirectResponse
+    public function update(Movie $movie, StoreMovieRequest $request): RedirectResponse
     {
-        $attributes = request()->validated();
+        $attributes = $request->validated();
 
         $movie
         ->setTranslation('title', 'en', $attributes['title']['en'])
