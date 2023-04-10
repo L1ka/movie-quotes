@@ -15,12 +15,10 @@
         {{ $slot }}
 
         <div class="absolute left-[50px] top-[473px]">
-            <div class="w-[58px] h-[58px] border rounded-full flex justify-center items-center mb-4 cursor-pointer">
-                <h3 class="text-2xl  text-white "><a   href="{{ route('set-locale', ['locale' =>'en'] ) }}">en</a></h3>
-            </div>
-            <div class="w-[58px] h-[58px] border rounded-full flex justify-center items-center bg-white cursor-pointer">
-                <h3 class="text-2xl  text-black font-sans"><a href="{{ route('set-locale', ['locale' =>'ka'] ) }}">ka</button></h3>
-            </div>
+            <a tabindex=1 class=" text-2xl w-[58px] h-[58px] border rounded-full flex justify-center items-center mb-4 cursor-pointer text-white focus:bg-white focus:text-black "
+            href="{{ route('set-locale', ['locale' =>'en'] ) }}">en</a>
+            <a class="text-2xl  text-white w-[58px] h-[58px] border rounded-full flex justify-center items-center cursor-pointer focus:bg-white focus:text-black "
+            tabindex=2 href="{{ route('set-locale', ['locale' =>'ka'] ) }}">ka</a>
         </div>
 
     </body>
