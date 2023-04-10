@@ -23,9 +23,7 @@ class MovieController extends Controller
     public function store(Movie $movie): RedirectResponse
     {
 
-        $attributes = request()->validate([
-            'title.*' => ['required','unique_translation:movies'],
-        ]);
+        $attributes = request()->validateed();
 
         $movie
         ->setTranslation('title', 'en', $attributes['title']['en'])
@@ -39,9 +37,7 @@ class MovieController extends Controller
 
     public function update(Movie $movie): RedirectResponse
     {
-        $attributes = request()->validate([
-            'title.*' => ['required','unique_translation:movies'],
-        ]);
+        $attributes = request()->validated();
 
         $movie
         ->setTranslation('title', 'en', $attributes['title']['en'])

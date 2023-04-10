@@ -24,10 +24,8 @@ class QuoteController extends Controller
 
     public function store(StoreQuoteRequest $request): RedirectResponse
     {
-        $validated = $request->validated();
-
         Quote::create([
-            ...$validated
+            ...$request->validated()
            ,
             'thumbnail' => '/storage/'.request()->file('thumbnail')->store('thumbnails'),
         ]);
@@ -38,10 +36,8 @@ class QuoteController extends Controller
 
     public function update(StoreQuoteRequest $request, Quote $quote): RedirectResponse
     {
-        $validated = $request->validated();
-
         $quote->update([
-            ...$validated
+            ...$request->validated()
            ,
             'thumbnail' => '/storage/'.request()->file('thumbnail')->store('thumbnails'),
         ]);
