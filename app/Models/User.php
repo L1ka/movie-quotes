@@ -31,7 +31,7 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function setPasswordAttribute($password)
+    public function setPasswordAttribute($password): void
     {
         $this->attributes['password'] = bcrypt($password);
     }
