@@ -1,22 +1,30 @@
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+@vite('resources/css/app.css')
 
-<form method="Post" action="{{ route('movies.store') }}">
-    @csrf
-    <input type="text" name="title[ka]"  value="{{ old('title.ka') }}" placeholder="ka title">
-    @error('title.ka')
+<div class="flex min-h-full items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
+    <div class="w-full max-w-md space-y-8">
+      <div>
+        <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900 tracking-widest">{{ __('create_movie') }}</h2>
+      </div>
+        <form class="mt-8 space-y-6" method="Post" action="{{ route('movies.store') }}">
+        @csrf
+            <div>
+        <input class="relative block w-full rounded-t-md border-0 py-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-m sm:leading-6 indent-3" placeholder="{{ __('geo_quote') }}" type="text" name="title[ka]"  value="{{ old('title.ka') }}" placeholder="{{ __('geo_title') }}">
+    </div>
+        @error('title.ka')
     {{ $message }}
     @enderror
-    <input type="text" name="title[en]"  value="{{ old('title.en') }}" placeholder="en title">
+    <div>
+    <input class="relative block w-full rounded-t-md border-0 py-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-m sm:leading-6 indent-3" type="text" name="title[en]"  value="{{ old('title.en') }}" placeholder="{{ __('en_title') }}">
+    </div>
     @error('title.en')
     {{ $message }}
     @enderror
-    <button type="submit" >{{ __('save') }}</button>
-
-    @if(Session::get('success'))
-        <div x-data="{show: true}"
-             x-init="setTimeout(()=> show =false, 2000)"
-             x-show="show">
-            {{session::get('success')}}
+        <div>
+          <button type="submit" class="tracking-widest group relative flex w-full justify-center rounded-md bg-gray-600 px-3 py-3 text-sm font-semibold text-white hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+            {{ __('save') }}
+          </button>
         </div>
-    @endif
-</form>
+      </form>
+    </div>
+  </div>

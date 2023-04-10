@@ -3,7 +3,7 @@
 <div class="flex min-h-full items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
     <div class="w-full max-w-md space-y-8">
       <div>
-        <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900 tracking-widest">{{ __('edit_quote') }}Edit Quote</h2>
+        <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900 tracking-widest">{{ __('edit_quote') }}</h2>
       </div>
       <form class="mt-8 space-y-6" action="{{ route('quotes.update', ['quote' => $quote]) }}" method="POST" enctype="multipart/form-data">
 
@@ -20,13 +20,13 @@
           @enderror
 
           <div>
-            <input  name="quote[ka]" value="{{ $quote->getTranslation('quote', 'ka') }}" type="text" required class="relative block w-full rounded-t-md border-0 py-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-m sm:leading-6 indent-3" placeholder="Georgian Quote">
+            <input  name="quote[ka]" value="{{ $quote->getTranslation('quote', 'ka') }}" type="text" required class="relative block w-full rounded-t-md border-0 py-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-m sm:leading-6 indent-3" placeholder="{{ __('geo_quote') }}">
           </div>
           @error('quote.ka')
           {{ $message }}
           @enderror
           <div>
-            <input  name="quote[en]" value="{{ $quote->getTranslation('quote', 'en') }}" type="text" required class="relative block w-full rounded-b-md border-0 py-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-m sm:leading-6 indent-3" placeholder="English Quote">
+            <input  name="quote[en]" value="{{ $quote->getTranslation('quote', 'en') }}" type="text" required class="relative block w-full rounded-b-md border-0 py-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-m sm:leading-6 indent-3" placeholder="{{ __('en_quote') }}">
           </div>
           @error('quote.ka')
           {{ $message }}

@@ -20,19 +20,19 @@
           {{ $message }}
           @enderror
           <div>
-            <input  name="quote[ka]" value="{{ old('quote.ka') }}" type="text" required class="relative block w-full rounded-t-md border-0 py-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-m sm:leading-6 indent-3" placeholder="Georgian Quote">
+            <input  name="quote[ka]" value="{{ old('quote.ka') }}" type="text"  class="relative block w-full rounded-t-md border-0 py-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-m sm:leading-6 indent-3" placeholder="{{ __('geo_quote') }}">
           </div>
           @error('quote.ka')
           {{ $message }}
           @enderror
           <div>
-            <input  name="quote[en]" value="{{ old('quote.en') }}" type="text" required class="relative block w-full rounded-b-md border-0 py-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-m sm:leading-6 indent-3" placeholder="English Quote">
+            <input  name="quote[en]" value="{{ old('quote.en') }}" type="text" class="relative block w-full rounded-b-md border-0 py-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-m sm:leading-6 indent-3" placeholder="{{ __('en_quote') }}">
           </div>
           @error('quote.ka')
           {{ $message }}
           @enderror
           <div>
-            <input  name="thumbnail" value="{{ old('thumbnail') }}" type="file" required class="relative block w-full rounded-b-md border-0 py-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-m sm:leading-6 indent-3">
+            <input  name="thumbnail" value="{{ old('thumbnail') }}" type="file"  class="relative block w-full rounded-b-md border-0 py-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-m sm:leading-6 indent-3">
           </div>
           @error('thumbnail')
           {{ $message }}
