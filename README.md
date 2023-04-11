@@ -4,7 +4,7 @@
 
 ### App has admin panel for all crud operations. Admin can create new records or update existing ones.
 
-### To have access on admin panel user should be registered with spetial artisan command.
+### To have access on admin panel user should be registered with special artisan command.
 
 ## Table of Contents
 

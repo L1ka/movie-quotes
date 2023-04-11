@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreLoginRequest;
+use App\Http\Requests\login\StoreLoginRequest;
 use App\Models\Movie;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;

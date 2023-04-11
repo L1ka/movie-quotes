@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\quote;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreLoginRequest extends FormRequest
+class StoreQuoteRequest extends FormRequest
 {
 
     /**
@@ -15,8 +15,9 @@ class StoreLoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'username' => ['required', 'exists:users'],
-            'password' => ['required']
+            'quote.*' => ['required','unique_translation:quotes'],
+            'thumbnail' => ['required', 'image'],
+            'movie_id' => ['required'],
         ];
     }
 }

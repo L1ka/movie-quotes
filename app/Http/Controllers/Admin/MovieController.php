@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Http\Requests\StoreMovieRequest;
+use App\Http\Requests\movie\StoreMovieRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Movie;
 use Illuminate\Contracts\View\View;
