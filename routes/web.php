@@ -3,10 +3,9 @@
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Admin\MovieController as AdminMovieController;
+use App\Http\Controllers\Admin\MovieController;
 use App\Http\Controllers\Admin\QuoteController;
 use App\Http\Controllers\LocaleController;
-use App\Http\Controllers\MovieController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,12 +23,14 @@ Route::view('movies/create','movies.create')->middleware('auth')->name('movies.c
 
 
 
-Route::group(['controller' => AdminMovieController::class, 'middleware' => 'auth'], function () {
+Route::group(['controller' => MovieController::class, 'middleware' => 'auth'], function () {
     Route::get('movies/dashboard',  'index')->name('movies_dashboard.index');
     Route::post('movies/store', 'store')->name('movies.store');
     Route::get('movies/{movie}/edit',  'edit')->name('movies.edit');
     Route::patch('movies/{movie}',  'update')->name('movies.update');
     Route::delete('movies/{movie}',  'destroy')->name('movies.destroy');
+    Route::get('/',  'home')->name('home');
+    Route::get('movies/{movie}', 'list')->name('movie.list');
 });
 
 Route::group(['controller' => QuoteController::class, 'middleware' => 'auth'], function () {
@@ -46,8 +47,7 @@ Route::post('login', [AuthController::class, 'signIn'])->middleware('guest')->na
 Route::get('set-locale/{locale}', [LocaleController::class, 'setLocale'])->name('set-locale');
 
 
-Route::get('/', [MovieController::class, 'index'])->name('home.index');
-Route::get('movies/{movie}', [MovieController::class, 'list'])->name('movie.list');
+
 
 
 
