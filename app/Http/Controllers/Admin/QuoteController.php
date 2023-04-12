@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreQuoteRequest;
+use App\Http\Requests\Quote\StoreQuoteRequest;
 use App\Models\Quote;
 use App\Models\Movie;
 use Illuminate\Contracts\View\View;
@@ -31,7 +31,7 @@ class QuoteController extends Controller
         ]);
 
 
-        return redirect('movies/dashboard');
+        return redirect()->route('movies_dashboard.index');
     }
 
     public function update(StoreQuoteRequest $request, Quote $quote): RedirectResponse
@@ -42,7 +42,7 @@ class QuoteController extends Controller
             'thumbnail' => '/storage/'.request()->file('thumbnail')->store('thumbnails'),
         ]);
 
-        return redirect('movies/dashboard');
+        return redirect()->route('movies_dashboard.index');
     }
 
     public function destroy(Quote $quote): View

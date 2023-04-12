@@ -9,7 +9,7 @@
         <form class="mt-8 space-y-6" method="Post" action="{{ route('movies.store') }}">
         @csrf
             <div>
-        <input class="relative block w-full rounded-t-md border-0 py-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-m sm:leading-6 indent-3" placeholder="{{ __('geo_quote') }}" type="text" name="title[ka]"  value="{{ old('title.ka') }}" placeholder="{{ __('geo_title') }}">
+        <input class="relative block w-full rounded-t-md border-0 py-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-m sm:leading-6 indent-3" type="text" name="title[ka]"  value="{{ old('title.ka') }}" placeholder="{{ __('geo_title') }}">
     </div>
         @error('title.ka')
     {{ $message }}

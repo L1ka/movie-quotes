@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreLoginRequest;
+use App\Http\Requests\Login\StoreLoginRequest;
 use App\Models\Movie;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -20,7 +20,7 @@ class AuthController extends Controller
         }
         session()->regenerate();
 
-        return redirect('movies/dashboard');
+        return redirect()->route('movies_dashboard.index');
     }
 
     public function index(): View
