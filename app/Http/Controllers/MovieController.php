@@ -15,19 +15,15 @@ class MovieController extends Controller
         }
 
         $movie = Movie::with('quotes')->get()->random();
-        if($movie->quotes->count() === 0){
-            return view('index', [
-                'movie' => $movie,
-                'quote' => null
-            ]);
-        }
 
-        $quote = $movie->quotes->random();
+        if($movie->quotes->count() !== 0) {
+            $quote = $movie->quotes->random();
+        }
 
         return view('index', [
             'movie' => $movie,
-            'quote' => $quote
-        ]);
+            'quote' => $quote ?? null
+            ]);
     }
 
     public function list(Movie $movie): View

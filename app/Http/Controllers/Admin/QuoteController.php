@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\quote\StoreQuoteRequest;
+use App\Http\Requests\Quote\StoreQuoteRequest;
 use App\Models\Quote;
 use App\Models\Movie;
 use Illuminate\Contracts\View\View;
