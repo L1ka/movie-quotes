@@ -19,7 +19,7 @@ class QuoteController extends Controller
 
     public function edit(Quote $quote): View
     {
-        return view('quotes.edit', ['quote' => $quote, 'movie' =>  Movie::where('id', $quote->movie_id)->first()]);
+        return view('quotes.edit', ['quote' => $quote]);
     }
 
     public function store(StoreQuoteRequest $request): RedirectResponse

@@ -13,7 +13,7 @@
                 <option
                     value="{{ $quote -> movie_id }}"
                     selected
-                >{{ ucwords($movie->title) }}</option>
+                >{{ ucwords($quote ->movie->title) }}</option>
         </select>
           @error('quote_id')
           {{ $message }}
