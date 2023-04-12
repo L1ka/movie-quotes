@@ -45,12 +45,10 @@ class QuoteController extends Controller
         return redirect()->route('movies_dashboard.index');
     }
 
-    public function destroy(Quote $quote): View
+    public function destroy(Quote $quote): RedirectResponse
     {
         $quote->delete();
 
-        $movies = Movie::with('quotes')->get();
-
-        return view('movies_dashboard.index' , ['movies' => $movies]);
+        return back();
     }
 }
