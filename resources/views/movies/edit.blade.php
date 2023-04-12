@@ -10,13 +10,13 @@
         @csrf
         @method('PATCH')
             <div>
-                <input class="relative block w-full rounded-t-md border-0 py-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-m sm:leading-6 indent-3" type="text" name="title[ka]"  value="{{ $movie->getTranslation('title', 'ka') }}" placeholder="{{ __('geo_title') }}">
+                <input class="relative block w-full rounded-t-md border-0 py-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-m sm:leading-6 indent-3" type="text" name="title[ka]"  value="{{old('title.ka') ?? $movie->getTranslation('title', 'ka') }}" placeholder="{{ __('geo_title') }}">
             </div>
             @error('title.ka')
             {{ $message }}
             @enderror
     <div>
-        <input class="relative block w-full rounded-t-md border-0 py-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-m sm:leading-6 indent-3" type="text" name="title[en]"  value="{{ $movie->getTranslation('title', 'en') }}" placeholder="{{ __('en_title') }}">
+        <input class="relative block w-full rounded-t-md border-0 py-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-m sm:leading-6 indent-3" type="text" name="title[en]"  value="{{ old('title.en') ?? $movie->getTranslation('title', 'en') }}" placeholder="{{ __('en_title') }}">
     </div>
     @error('title.en')
     {{ $message }}

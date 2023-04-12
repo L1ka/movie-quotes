@@ -179,7 +179,7 @@ return [
     |
     */
 
-    'attributes' => ['title.ka'=> 'ქართული სახელწოდება', 'quote.ka' => 'ციტატა', 'thumbnail' => 'სურათი', 'title.en' => 'ინგლისური სახელწოდება'],
+    'attributes' => ['title.ka'=> 'ქართული სახელწოდება', 'quote.ka' => 'ციტატა','quote.en'=> 'ციტატა', 'thumbnail' => 'სურათი', 'title.en' => 'ინგლისური სახელწოდება'],
 
 
 

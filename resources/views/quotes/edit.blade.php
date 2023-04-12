@@ -9,7 +9,7 @@
 
         @csrf
         @method('PATCH')
-        <select name="movie_id" id="movie_id" required>
+        <select name="movie_id" id="movie_id">
                 <option
                     value="{{ $quote -> movie_id }}"
                     selected
@@ -20,20 +20,20 @@
           @enderror
 
           <div>
-            <input  name="quote[ka]" value="{{ $quote->getTranslation('quote', 'ka') }}" type="text" required class="relative block w-full rounded-t-md border-0 py-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-m sm:leading-6 indent-3" placeholder="{{ __('geo_quote') }}">
+            <input  name="quote[ka]" value="{{ old('quote.ka') ?? $quote->getTranslation('quote', 'ka') }}" type="text" class="relative block w-full rounded-t-md border-0 py-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-m sm:leading-6 indent-3" placeholder="{{ __('geo_quote') }}">
           </div>
           @error('quote.ka')
           {{ $message }}
           @enderror
           <div>
-            <input  name="quote[en]" value="{{ $quote->getTranslation('quote', 'en') }}" type="text" required class="relative block w-full rounded-b-md border-0 py-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-m sm:leading-6 indent-3" placeholder="{{ __('en_quote') }}">
+            <input  name="quote[en]" value="{{ old('quote.en') ?? $quote->getTranslation('quote', 'en') }}" type="text" class="relative block w-full rounded-b-md border-0 py-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-m sm:leading-6 indent-3" placeholder="{{ __('en_quote') }}">
           </div>
-          @error('quote.ka')
+          @error('quote.en')
           {{ $message }}
           @enderror
           <img src="{{ $quote->thumbnail }}" alt="movie-poster">
           <div>
-            <input  name="thumbnail"  value="{{ $quote->thumbnail }}" type="file" required class="relative block w-full rounded-b-md border-0 py-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-m sm:leading-6 indent-3">
+            <input  name="thumbnail"  value="{{ $quote->thumbnail }}" type="file" class="relative block w-full rounded-b-md border-0 py-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-m sm:leading-6 indent-3">
           </div>
           @error('thumbnail')
           {{ $message }}
