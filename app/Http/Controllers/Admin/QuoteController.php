@@ -51,4 +51,9 @@ class QuoteController extends Controller
 
         return back();
     }
+
+    public function home(): View
+    {
+        return view('index', [ 'quote' => Quote::inRandomOrder()->first() ]);
+    }
 }

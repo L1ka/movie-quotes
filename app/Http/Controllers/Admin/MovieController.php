@@ -54,11 +54,6 @@ class MovieController extends Controller
         return redirect()->route('movies_dashboard.index');
     }
 
-    public function home(Quote $quote): View
-    {
-        return view('index', [ 'quotes' => $quote->all() ]);
-    }
-
     public function list(Movie $movie): View
     {
         return view('list', ['movie' => $movie]);
