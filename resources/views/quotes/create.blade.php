@@ -8,7 +8,7 @@
       <form class="mt-8 space-y-6" action="{{ route('quotes.store') }}" method="POST" enctype="multipart/form-data">
 
         @csrf
-        <select name="movie_id" id="movie_id" required>
+        <select name="movie_id" id="movie_id" >
             @foreach ($movies as $movie)
                 <option
                     value="{{ $movie->id }}"
@@ -16,9 +16,6 @@
                 >{{ ucwords($movie->title) }}</option>
             @endforeach
         </select>
-          @error('quote.ka')
-          {{ $message }}
-          @enderror
           <div>
             <input  name="quote[ka]" value="{{ old('quote.ka') }}" type="text"  class="relative block w-full rounded-t-md border-0 py-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-m sm:leading-6 indent-3" placeholder="{{ __('geo_quote') }}">
           </div>
@@ -28,7 +25,7 @@
           <div>
             <input  name="quote[en]" value="{{ old('quote.en') }}" type="text" class="relative block w-full rounded-b-md border-0 py-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-m sm:leading-6 indent-3" placeholder="{{ __('en_quote') }}">
           </div>
-          @error('quote.ka')
+          @error('quote.en')
           {{ $message }}
           @enderror
           <div>

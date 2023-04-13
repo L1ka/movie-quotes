@@ -19,7 +19,7 @@ class QuoteController extends Controller
 
     public function edit(Quote $quote): View
     {
-        return view('quotes.edit', ['quote' => $quote, 'movie' =>  Movie::where('id', $quote->movie_id)->first()]);
+        return view('quotes.edit', ['quote' => $quote]);
     }
 
     public function store(StoreQuoteRequest $request): RedirectResponse
@@ -45,12 +45,15 @@ class QuoteController extends Controller
         return redirect()->route('movies_dashboard.index');
     }
 
-    public function destroy(Quote $quote): View
+    public function destroy(Quote $quote): RedirectResponse
     {
         $quote->delete();
 
-        $movies = Movie::with('quotes')->get();
+        return back();
+    }
 
-        return view('movies_dashboard.index' , ['movies' => $movies]);
+    public function home(): View
+    {
+        return view('index', [ 'quote' => Quote::inRandomOrder()->first() ]);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\Movie\StoreMovieRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Movie;
+use App\Models\Quote;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
@@ -52,4 +53,10 @@ class MovieController extends Controller
 
         return redirect()->route('movies_dashboard.index');
     }
+
+    public function list(Movie $movie): View
+    {
+        return view('list', ['movie' => $movie]);
+    }
+
 }

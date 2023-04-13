@@ -179,6 +179,6 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => ['title.ka'=> 'georgian title', 'quote.ka' => 'quote', 'quote.en'=> 'quote', 'thumbnail' => 'image', 'title.en' => 'english title'],
 
 ];

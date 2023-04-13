@@ -15,9 +15,9 @@
         {{ $slot }}
 
         <div class="absolute left-[50px] top-[473px]">
-            <a tabindex=1 class=" text-2xl w-[58px] h-[58px] border rounded-full flex justify-center items-center mb-4 cursor-pointer text-white focus:bg-white focus:text-black "
+            <a tabindex=1 class="{{ app()->getLocale() === 'en' ? 'bg-white text-black' : 'text-white' }} text-2xl w-[58px] h-[58px] border rounded-full flex justify-center items-center mb-4 cursor-pointer "
             href="{{ route('set-locale', ['locale' =>'en'] ) }}">en</a>
-            <a class="text-2xl  text-white w-[58px] h-[58px] border rounded-full flex justify-center items-center cursor-pointer focus:bg-white focus:text-black "
+            <a class="{{ app()->getLocale() === 'ka' ? 'bg-white text-black' : 'text-white' }} text-2xl w-[58px] h-[58px] border rounded-full flex justify-center items-center cursor-pointer focus:bg-white focus:text-black "
             tabindex=2 href="{{ route('set-locale', ['locale' =>'ka'] ) }}">ka</a>
         </div>
 
